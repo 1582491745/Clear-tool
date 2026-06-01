@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电脑安全清理助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">🖥️ 电脑安全清理助手</h1>
+            <p class="subtitle">✅ 不损坏系统 | ✅ 不删重要文件 | ✅ 小白一键操作</p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">选择你要清理的内容</h2>
+            <div class="checkbox-group">
+                <label class="check-item">
+                    <input type="checkbox" value="temp"> 清理系统临时文件
+                </label>
+                <label class="check-item">
+                    <input type="checkbox" value="recycle"> 清空回收站
+                </label>
+                <label class="check-item">
+                    <input type="checkbox" value="qq"> 清理QQ过期缓存（6个月前）
+                </label>
+                <label class="check-item">
+                    <input type="checkbox" value="wechat"> 清理微信大文件缓存
+                </label>
+                <label class="check-item">
+                    <input type="checkbox" value="hiber"> 关闭休眠（释放16GB空间）
+                </label>
+            </div>
+        </div>
+
+        <button class="btn" id="generateBtn">🔥 生成一键清理脚本</button>
+
+        <div class="tip" id="tipBox" style="display: none;">
+            <p>✅ 脚本已生成，复制到电脑新建文本文档，保存为 .bat 运行即可</p>
+        </div>
+
+        <div class="guide-btn-box">
+            <button class="guide-btn" id="guideBtn">📖 不会用？点这里看详细教程</button>
+        </div>
+
+        <!-- 教程弹窗 -->
+        <div class="modal" id="guideModal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>💻 脚本使用教程</h2>
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">点击「生成一键清理脚本」，提示“已复制”即成功</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">在电脑桌面空白处右键 → 新建 → 文本文档</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">打开文档 → 粘贴脚本 → 点击「文件→另存为」</div>
+                    <div class="warning">⚠️ 保存时：文件名填 清理.bat，编码选 ANSI</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-text">双击桌面的 清理.bat，自动开始清理</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
