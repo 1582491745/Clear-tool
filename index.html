@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电脑安全清理助手</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>🧹 电脑安全清理助手</h1>
+    <p class="desc">勾选要清理的项目 → 生成脚本 → 管理员运行，安全释放空间</p>
+
+    <div class="card">
+        <h2>📌 选择清理项</h2>
+        <div class="checklist">
+            <label><input type="checkbox" id="sysTemp" checked> 清理系统临时文件（安全）</label>
+            <label><input type="checkbox" id="recycle" checked> 清空回收站</label>
+            <label><input type="checkbox" id="downloads"> 清理下载文件夹：.exe .zip .rar .7z .msi</label>
+            <label><input type="checkbox" id="qqCache"> 清理QQ缓存（图片/文件/视频）</label>
+            <label><input type="checkbox" id="wechatCache"> 清理微信缓存（图片/文件/视频）</label>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🧰 强力卸载工具（推荐）</h2>
+        <p>Geek Uninstaller —— 卸载软件+清理残留（无捆绑）</p>
+        <a href="https://geekuninstaller.com/zh/" target="_blank" class="btn-link">🔗 官方下载（免费版）</a>
+        <div class="path-note">
+            <strong>卸载后残留常见位置（手动删）：</strong>
+            <ul>
+                <li>C:\Program Files\（软件主目录）</li>
+                <li>C:\Program Files (x86)\（32位软件）</li>
+                <li>C:\Users\你的用户名\AppData\Local\</li>
+                <li>C:\Users\你的用户名\AppData\Roaming\</li>
+                <li>C:\ProgramData\（公共配置）</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📂 QQ / 微信 缓存位置（可手动找）</h2>
+        <div class="path-note">
+            <strong>微信默认位置：</strong>
+            <p>C:\Users\你的用户名\Documents\WeChat Files\你的微信号\FileStorage</p>
+            <ul>
+                <li>Image：图片缓存</li>
+                <li>File：接收的文件</li>
+                <li>Video：视频缓存</li>
+            </ul>
+        </div>
+        <div class="path-note">
+            <strong>QQ默认位置：</strong>
+            <p>C:\Users\你的用户名\Documents\Tencent Files\你的QQ号\</p>
+            <ul>
+                <li>Image：图片缓存</li>
+                <li>FileRecv：接收文件</li>
+                <li>Video：视频缓存</li>
+            </ul>
+        </div>
+    </div>
+
+    <button id="genBtn" class="btn-main">🔥 生成一键清理脚本并复制</button>
+
+    <div id="tip" class="tip"></div>
+
+    <div class="card">
+        <h2>📖 不会用？点这里看教程</h2>
+        <button id="showTutorial" class="btn-tutorial">展开详细教程</button>
+        <div id="tutorial" class="tutorial-box">
+            <p><strong>使用步骤：</strong></p>
+            <ol>
+                <li>点击上面按钮，脚本自动复制</li>
+                <li>桌面右键 → 新建 → 文本文档</li>
+                <li>粘贴脚本 → 保存为 <strong>clean.bat</strong>（编码选ANSI）</li>
+                <li>右键 clean.bat → <strong>以管理员身份运行</strong></li>
+                <li>等待跑完，自动释放空间</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
