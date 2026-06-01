@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电脑安全清理助手</title>
+<link rel="stylesheet" href="style.css">
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>🧹 电脑安全清理助手</h1>
+    <p class="desc">勾选清理项 → 生成脚本 → 管理员运行，安全释放空间</p>
+
+    <!--访问统计-->
+    <div class="stat-box">
+        总访问量：<span id="busuanzi_value_site_pv"></span> &nbsp;|&nbsp;
+        独立访客：<span id="busuanzi_value_site_uv"></span>
+    </div>
+
+    <div class="card">
+        <h2>📌 选择清理项</h2>
+        <div class="checklist">
+            <label><input type="checkbox" id="sysTemp" checked> 清理系统临时文件（安全）</label>
+            <label><input type="checkbox" id="recycle" checked> 清空回收站</label>
+            <label><input type="checkbox" id="downloads"> 清理下载文件夹：.exe .zip .rar .7z .msi</label>
+            <label><input type="checkbox" id="qqCache"> 清理QQ缓存（图片/文件/视频）</label>
+            <label><input type="checkbox" id="wechatCache"> 清理微信缓存（图片/文件/视频）</label>
+        </div>
+    </div>
+
+    <button id="genBtn" class="btn-main">🔥 生成一键清理脚本并复制</button>
+    <div id="tip" class="tip"></div>
+
+    <!--bat图文教程 4张图-->
+    <div class="card">
+        <h2>📖 BAT脚本使用图文教程</h2>
+        <div class="step">
+            <p><strong>步骤1：桌面空白右键→新建→文本文档</strong></p>
+            <img src="bat1.png" class="tutorial-img">
+        </div>
+        <div class="step">
+            <p><strong>步骤2：打开文档，粘贴已复制的清理脚本</strong></p>
+            <img src="bat2.png" class="tutorial-img">
+        </div>
+        <div class="step">
+            <p><strong>步骤3：保存，修改文件名后缀为 .bat</strong></p>
+            <img src="bat3.png" class="tutorial-img">
+        </div>
+        <div class="step">
+            <p><strong>步骤4：右键文件→以管理员身份运行自动清理</strong></p>
+            <img src="bat4.png" class="tutorial-img">
+        </div>
+    </div>
+
+    <!--Geek教程 1张图-->
+    <div class="card">
+        <h2>🧰 Geek Uninstaller 软件卸载教程</h2>
+        <p>打开软件后<strong>双击要卸载的软件</strong>，弹出窗口直接点击【彻底删除】，自动卸载软件+清扫残留，无误删系统风险</p>
+        <img src="geek1.png" class="tutorial-img">
+        <div class="path-note">
+            <strong>软件卸载残留手动查找目录：</strong>
+            <ul>
+                <li>C:\Program Files\ 64位软件安装目录</li>
+                <li>C:\Program Files (x86)\ 32位软件目录</li>
+                <li>C:\Users\用户名\AppData\Local\软件缓存</li>
+                <li>C:\Users\用户名\AppData\Roaming\软件配置</li>
+                <li>C:\ProgramData\系统公共软件数据</li>
+            </ul>
+        </div>
+        <a href="https://geekuninstaller.com/zh/" target="_blank" class="btn-link">🔗 Geek官方免费下载</a>
+    </div>
+
+    <!--QQ微信缓存位置-->
+    <div class="card">
+        <h2>📂 QQ/微信本地缓存存放路径</h2>
+        <div class="path-note">
+            <strong>微信缓存目录：</strong>
+            <p>C:\Users\用户名\Documents\WeChat Files\微信号\FileStorage</p>
+            <ul><li>Image：聊天图片 | File：接收文档 | Video：短视频</li></ul>
+        </div>
+        <div class="path-note">
+            <strong>QQ缓存目录：</strong>
+            <p>C:\Users\用户名\Documents\Tencent Files\QQ号</p>
+            <ul><li>Image：保存图片 | FileRecv：接收文件 | Video：缓存视频</li></ul>
+        </div>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
