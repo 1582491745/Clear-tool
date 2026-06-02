@@ -1,88 +1,114 @@
-body {
-    font-family: "Microsoft YaHei", Arial, sans-serif;
-    background: #f5f7fa;
-    margin: 0;
-    padding: 20px;
+const genBtn = document.getElementById('genBtn');
+const tip = document.getElementById('tip');
+
+// 生成 BAT 脚本
+function generateScript() {
+    const sysTemp = document.getElementById('sysTemp').checked;
+    const recycle = document.getElementById('recycle').checked;
+    const downloads = document.getElementById('downloads').checked;
+    const qqCache = document.getElementById('qqCache').checked;
+    const wechatCache = document.getElementById('wechatCache').checked;
+
+    let lines = [
+        '@echo off',
+        'title 电脑安全清理助手',
+        'color 0A',
+        'echo.',
+        'echo ====================== 开始清理 ======================',
+        'echo.'
+    ];
+
+    // 系统临时文件
+    if (sysTemp) {
+        lines.push('echo 正在清理系统临时文件...');
+        lines.push('del /f /s /q %temp%\\*');
+        lines.push('rd /s /q %temp%');
+        lines.push('md %temp%');
+        lines.push('echo 系统临时文件清理完成');
+        lines.push('echo.');
+    }
+
+    // 回收站
+    if (recycle) {
+        lines.push('echo 正在清空回收站...');
+        lines.push('rd /s /q C:\\$Recycle.Bin');
+        lines.push('echo 回收站已清空');
+        lines.push('echo.');
+    }
+
+    // 下载文件夹
+    if (downloads) {
+        lines.push('echo 正在清理下载文件夹安装包/压缩包...');
+        lines.push('del /f /s /q "%userprofile%\\Downloads\\*.exe"');
+        lines.push('del /f /s /q "%userprofile%\\Downloads\\*.zip"');
+        lines.push('del /f /s /q "%userprofile%\\Downloads\\*.rar"');
+        lines.push('del /f /s /q "%userprofile%\\Downloads\\*.7z"');
+        lines.push('del /f /s /q "%userprofile%\\Downloads\\*.msi"');
+        lines.push('echo 下载文件夹清理完成');
+        lines.push('echo.');
+    }
+
+    // QQ 6个月以上图片视频（简单路径，不写复杂ID）
+    if (qqCache) {
+        lines.push('echo 正在清理QQ 6个月以上图片/视频/缓存...');
+        lines.push('forfiles /p "%userprofile%\\Documents\\Tencent Files\\*\\Image" /s /m *.* /d -180 /c "cmd /c del @path"');
+        lines.push('forfiles /p "%userprofile%\\Documents\\Tencent Files\\*\\Video" /s /m *.* /d -180 /c "cmd /c del @path"');
+        lines.push('echo QQ 6个月以上文件清理完成');
+        lines.push('echo.');
+    }
+
+    // 微信 6个月以上图片视频
+    if (wechatCache) {
+        lines.push('echo 正在清理微信 6个月以上图片/视频/缓存...');
+        lines.push('forfiles /p "%userprofile%\\Documents\\WeChat Files\\*\\FileStorage\\Image" /s /m *.* /d -180 /c "cmd /c del @path"');
+        lines.push('forfiles /p "%userprofile%\\Documents\\WeChat Files\\*\\FileStorage\\Video" /s /m *.* /d -180 /c "cmd /c del @path"');
+        lines.push('echo 微信 6个月以上文件清理完成');
+        lines.push('echo.');
+    }
+
+    lines.push('echo ====================== 清理完成 ======================');
+    lines.push('pause');
+
+    return lines.join('\r\n');
 }
-.container {
-    max-width: 700px;
-    margin: 0 auto;
+
+// 复制函数（兼容 http + 所有浏览器）
+function copyToClipboard(text) {
+    // 方法1：现代浏览器 Clipboard API（优先）
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    }
+
+    // 方法2：降级到 textarea 兼容 http / 旧浏览器
+    return new Promise((resolve, reject) => {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            resolve(true);
+        } catch (e) {
+            reject(e);
+        }
+        document.body.removeChild(textarea);
+    });
 }
-h1 {
-    text-align: center;
-    color: #222;
-    margin:5px 0;
-}
-.desc {
-    text-align: center;
-    color: #666;
-    margin-bottom:10px;
-}
-.stat-box {
-    text-align:center;
-    color:#777;
-    font-size:14px;
-    margin-bottom:18px;
-}
-.card {
-    background: #fff;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom:16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-h2 {
-    margin:0 0 10px;
-    font-size:18px;
-    color:#222;
-}
-.checklist label {
-    display:block;
-    margin:9px 0;
-    cursor:pointer;
-}
-.path-note {
-    background:#f0f6ff;
-    border-left:4px solid #367bff;
-    padding:10px;
-    margin:12px 0;
-    font-size:14px;
-}
-.path-note ul {
-    padding-left:20px;
-    margin:5px 0;
-}
-.public-tips{
-    background:#fff2e5;
-    padding:12px;
-    border-radius:6px;
-    margin:10px 0;
-    color:#e65100;
-}
-.btn-main {
-    width:100%;
-    background:#ff6600;
-    color:#fff;
-    border:none;
-    padding:14px;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
-    margin:8px 0;
-}
-.btn-main:hover {
-    background:#e65c00;
-}
-.tip {
-    text-align:center;
-    color:#009933;
-    margin:6px 0;
-}
-.tutorial-img {
-    width:100%;
-    border-radius:6px;
-    margin:8px 0;
-}
-.step {
-    margin-bottom:16px;
-}
+
+// 按钮点击事件
+genBtn.addEventListener('click', async () => {
+    const script = generateScript();
+    tip.textContent = '';
+
+    try {
+        await copyToClipboard(script);
+        tip.textContent = '✅ 脚本已复制！去桌面新建 .bat 管理员运行即可';
+        tip.style.color = '#009933';
+    } catch (err) {
+        tip.textContent = '❌ 复制失败，请手动复制下面代码';
+        tip.style.color = 'red';
+        console.error(err);
+    }
+});
