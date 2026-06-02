@@ -4,27 +4,27 @@ document.getElementById('genBtn').addEventListener('click', function(){
     script += 'echo 正在清理，请稍候...\necho.\n';
 
     if(document.getElementById('sysTemp').checked){
-        script += 'echo [1/5] 清理系统临时文件\n';
+        script += 'echo [1/5]清理系统临时文件\n';
         script += 'del /f /s /q "%temp%\\*" >nul 2>&1\n';
         script += 'echo 完成\necho.\n';
     }
     if(document.getElementById('recycle').checked){
-        script += 'echo [2/5] 清空回收站\n';
+        script += 'echo [2/5]清空回收站\n';
         script += 'echo Y | powershell Clear-RecycleBin -Force >nul 2>&1\n';
         script += 'echo 完成\necho.\n';
     }
     if(document.getElementById('downloads').checked){
-        script += 'echo [3/5] 清理下载目录安装包压缩包\n';
+        script += 'echo [3/5]清理下载目录安装包压缩包\n';
         script += 'del /f /s /q "%userprofile%\\Downloads\\*.exe" "%userprofile%\\Downloads\\*.zip" "%userprofile%\\Downloads\\*.rar" "%userprofile%\\Downloads\\*.7z" "%userprofile%\\Downloads\\*.msi" >nul 2>&1\n';
         script += 'echo 完成\necho.\n';
     }
     if(document.getElementById('qqCache').checked){
-        script += 'echo [4/5] 清理QQ超过6个月的图片、文件、视频缓存\n';
+        script += 'echo [4/5]清理QQ超过6个月的图片、文件、视频缓存\n';
         script += 'forfiles /p "%userprofile%\\Documents\\Tencent Files" /s /d -180 /c "cmd /c del /f @path" >nul 2>&1\n';
         script += 'echo 完成\necho.\n';
     }
     if(document.getElementById('wechatCache').checked){
-        script += 'echo [5/5] 清理微信超过6个月的图片、文件、视频缓存\n';
+        script += 'echo [5/5]清理微信超过6个月的图片、文件、视频缓存\n';
         script += 'forfiles /p "%userprofile%\\Documents\\WeChat Files" /s /d -180 /c "cmd /c del /f @path" >nul 2>&1\n';
         script += 'echo 完成\necho.\n';
     }
