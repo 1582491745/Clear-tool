@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>电脑安全清理助手</title>
 <link rel="stylesheet" href="style.css">
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi.pure.mini.js"></script>
 </head>
 <body>
 <div class="container">
@@ -24,15 +24,15 @@
             <label><input type="checkbox" id="sysTemp" checked> 清理系统临时文件（安全）</label>
             <label><input type="checkbox" id="recycle" checked> 清空回收站</label>
             <label><input type="checkbox" id="downloads"> 清理下载文件夹：.exe .zip .rar .7z .msi</label>
-            <label><input type="checkbox" id="qqCache"> 清理QQ缓存（图片/文件/视频）</label>
-            <label><input type="checkbox" id="wechatCache"> 清理微信缓存（图片/文件/视频）</label>
+            <label><input type="checkbox" id="qqCache"> 清理QQ6个月以上图片/文件/视频缓存</label>
+            <label><input type="checkbox" id="wechatCache"> 清理微信6个月以上图片/文件/视频缓存</label>
         </div>
     </div>
 
     <button id="genBtn" class="btn-main">🔥 生成一键清理脚本并复制</button>
     <div id="tip" class="tip"></div>
 
-    <!--bat图文教程 4张图-->
+    <!--BAT图文教程 4张图-->
     <div class="card">
         <h2>📖 BAT脚本使用图文教程</h2>
         <div class="step">
@@ -53,11 +53,14 @@
         </div>
     </div>
 
-    <!--Geek教程 1张图-->
+    <!--Geek教程 1张图，公众号领包-->
     <div class="card">
         <h2>🧰 Geek Uninstaller 软件卸载教程</h2>
         <p>打开软件后<strong>双击要卸载的软件</strong>，弹出窗口直接点击【彻底删除】，自动卸载软件+清扫残留，无误删系统风险</p>
         <img src="geek1.png" class="tutorial-img">
+        <div class="public-tips">
+            ✅ 获取软件安装包：<strong>关注我的微信公众号，回复关键词【卸载工具】，自动发送网盘链接，下载单个exe程序，无需解压，双击直接打开使用</strong>
+        </div>
         <div class="path-note">
             <strong>软件卸载残留手动查找目录：</strong>
             <ul>
@@ -68,10 +71,9 @@
                 <li>C:\ProgramData\系统公共软件数据</li>
             </ul>
         </div>
-        <a href="https://geekuninstaller.com/zh/" target="_blank" class="btn-link">🔗 Geek官方免费下载</a>
     </div>
 
-    <!--QQ微信缓存位置-->
+    <!--QQ微信缓存路径保留文字说明，删除配图-->
     <div class="card">
         <h2>📂 QQ/微信本地缓存存放路径</h2>
         <div class="path-note">
