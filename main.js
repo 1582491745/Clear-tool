@@ -1,39 +1,88 @@
-document.getElementById('genBtn').addEventListener('click', function(){
-    let script = '@echo off\n';
-    script += 'title 一键安全清理脚本\n';
-    script += 'echo 正在清理，请稍候...\necho.\n';
-
-    if(document.getElementById('sysTemp').checked){
-        script += 'echo [1/5]清理系统临时文件\n';
-        script += 'rd /s /q %temp% >nul 2>&1 && md %temp%\n';
-        script += 'echo 完成\necho.\n';
-    }
-    if(document.getElementById('recycle').checked){
-        script += 'echo [2/5]清空回收站\n';
-        script += 'rd /s /q C:\\$Recycle.Bin >nul 2>&1\n';
-        script += 'echo 完成\necho.\n';
-    }
-    if(document.getElementById('downloads').checked){
-        script += 'echo [3/5]清理下载目录安装包压缩包\n';
-        script += 'del /f /s /q "%userprofile%\\Downloads\\*.exe" "%userprofile%\\Downloads\\*.zip" "%userprofile%\\Downloads\\*.rar" "%userprofile%\\Downloads\\*.7z" "%userprofile%\\Downloads\\*.msi" >nul 2>&1\n';
-        script += 'echo 完成\necho.\n';
-    }
-    if(document.getElementById('qqCache').checked){
-        script += 'echo [4/5]清理QQ图片文件视频缓存\n';
-        script += 'rd /s /q "%userprofile%\\Documents\\Tencent Files\\*\\Image" "%userprofile%\\Documents\\Tencent Files\\*\\FileRecv" "%userprofile%\\Documents\\Tencent Files\\*\\Video" >nul 2>&1\n';
-        script += 'echo 完成\necho.\n';
-    }
-    if(document.getElementById('wechatCache').checked){
-        script += 'echo [5/5]清理微信图片文件视频缓存\n';
-        script += 'rd /s /q "%userprofile%\\Documents\\WeChat Files\\*\\FileStorage\\Image" "%userprofile%\\Documents\\WeChat Files\\*\\FileStorage\\File" "%userprofile%\\Documents\\WeChat Files\\*\\FileStorage\\Video" >nul 2>&1\n';
-        script += 'echo 完成\necho.\n';
-    }
-
-    script += 'echo =====全部清理完毕=====\npause>nul';
-
-    navigator.clipboard.writeText(script).then(()=>{
-        document.getElementById('tip').innerText='✅脚本复制成功，去桌面新建bat文件';
-    }).catch(()=>{
-        document.getElementById('tip').innerText='❌复制失败，手动复制代码';
-    })
-})
+body {
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+    color: #222;
+    margin:5px 0;
+}
+.desc {
+    text-align: center;
+    color: #666;
+    margin-bottom:10px;
+}
+.stat-box {
+    text-align:center;
+    color:#777;
+    font-size:14px;
+    margin-bottom:18px;
+}
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom:16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+h2 {
+    margin:0 0 10px;
+    font-size:18px;
+    color:#222;
+}
+.checklist label {
+    display:block;
+    margin:9px 0;
+    cursor:pointer;
+}
+.path-note {
+    background:#f0f6ff;
+    border-left:4px solid #367bff;
+    padding:10px;
+    margin:12px 0;
+    font-size:14px;
+}
+.path-note ul {
+    padding-left:20px;
+    margin:5px 0;
+}
+.public-tips{
+    background:#fff2e5;
+    padding:12px;
+    border-radius:6px;
+    margin:10px 0;
+    color:#e65100;
+}
+.btn-main {
+    width:100%;
+    background:#ff6600;
+    color:#fff;
+    border:none;
+    padding:14px;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    margin:8px 0;
+}
+.btn-main:hover {
+    background:#e65c00;
+}
+.tip {
+    text-align:center;
+    color:#009933;
+    margin:6px 0;
+}
+.tutorial-img {
+    width:100%;
+    border-radius:6px;
+    margin:8px 0;
+}
+.step {
+    margin-bottom:16px;
+}
